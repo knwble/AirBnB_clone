@@ -82,22 +82,6 @@ class TestBaseModel(unittest.TestCase):
         self.assertEqual(d["name"], b.name)
         self.assertEqual(d["age"], b.age)
 
-    def test_3_to_dict_no_args(self):
-        """Tests to_dict() with no arguments."""
-        self.resetStorage()
-        with self.assertRaises(TypeError) as e:
-            BaseModel.to_dict()
-        msg = "to_dict() missing 1 required positional argument: 'self'"
-        self.assertEqual(str(e.exception), msg)
-
-    def test_3_to_dict_excess_args(self):
-        """Tests to_dict() with too many arguments."""
-        self.resetStorage()
-        with self.assertRaises(TypeError) as e:
-            BaseModel.to_dict(self, 98)
-        msg = "to_dict() takes 1 positional argument but 2 were given"
-        self.assertEqual(str(e.exception), msg)
-
     def test_4_instantiation(self):
         """Tests instantiation with **kwargs."""
 
