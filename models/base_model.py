@@ -8,16 +8,31 @@ class BaseModel():
     """
         This class defines all common attributes/methods for other classes
     """
-    def __init__(self):
-        """ initializes a new BaseModel """
+    def __init__(self, *args, **kwargs):
+        """ initializes a new BaseModel
 
-        self.id = str(uuid4())
-        self.created_at = datetime.now()
-        self.updated_at = datetime.now()
+        Args:
+        *args: List of arguments (not used)
+        **kwargs: Dictionary of key-value arguments
+
+        """
+        if kwargs:
+            for key, value in kwargs.items():
+                if key != "__class__":
+                    if key in ("created_at", "updated_at"):
+                        value = datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f")
+                    setattr(self, key, value)
+            self.id = kwargs.get("id", str(uuid4()))
+
+        else:
+
+            self.id = str(uuid4())
+            self.created_at = datetime.now()
+            self.updated_at = datetime.now()
 
     def __str__(self):
         """ Returns String Representation """
-   
+
         return f"[{self.__class__.__name__}] ({self.id}) {self.__dict__}"
 
     def save(self):
