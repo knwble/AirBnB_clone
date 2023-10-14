@@ -1,31 +1,30 @@
 #!/usr/bin/python3
-"""This python script is the base model"""
+"""This file is the base model"""
 
 import uuid
 from datetime import datetime
 
 
-class BaseModel():
+class BaseModel:
 
-    """This class defines all common attributes/methods for other classes"""
+    """This is the base class from which other classes will inherit"""
 
     def __init__(self, *args, **kwargs):
-        """ initializes a new BaseModel
+        """Initializes instance attributes
 
         Args:
-            *args: List of arguments (not used)
-            **kwargs: Dictionary of key-value arguments
-
+            *args: list of arguments
+            **kwargs: dict of key-values arguments
         """
 
         if kwargs is not None and kwargs != {}:
             for key in kwargs:
                 if key == "created_at":
                     self.__dict__["created_at"] = datetime.strptime(
-                            kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
+                        kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
                 elif key == "updated_at":
                     self.__dict__["updated_at"] = datetime.strptime(
-                            kwargs["update    d_at"], "%Y-%m-%dT%H:%M:%S.%f")
+                        kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
                 else:
                     self.__dict__[key] = kwargs[key]
         else:
@@ -34,17 +33,18 @@ class BaseModel():
             self.updated_at = datetime.now()
 
     def __str__(self):
-        """ Returns String Representation """
+        """Returns official string representation"""
 
-        return f"[{type(self).__name__}] ({self.id}) {self.__dict__}"
+        return "[{}] ({}) {}".\
+            format(type(self).__name__, self.id, self.__dict__)
 
     def save(self):
-        """ Updates the public instance attribute update_at """
+        """updates the public instance attribute updated_at"""
 
         self.updated_at = datetime.now()
 
     def to_dict(self):
-        """ returns a dictionary containing all keys/values of __dict__ """
+        """returns a dictionary containing all keys/values of __dict__"""
 
         mydict = self.__dict__.copy()
         mydict["__class__"] = type(self).__name__
