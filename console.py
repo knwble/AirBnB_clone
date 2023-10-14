@@ -8,7 +8,7 @@ class HBNBCommand(cmd.Cmd):
 
     """the command line interpreter class"""
 
-    prompt = "(hbnh) "
+    prompt = "(hbnb) "
 
     def do_quit(self, line):
         """Quit command to exit the program"""
@@ -22,6 +22,7 @@ class HBNBCommand(cmd.Cmd):
     def emptyline(self):
         """Does not execute anything"""
         pass
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
