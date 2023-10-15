@@ -1,20 +1,21 @@
 #!/usr/bin/python3
-"""This file is the base model"""
+"""This script is the base model"""
 
 import uuid
 from datetime import datetime
+from models import storage
 
 
 class BaseModel:
 
-    """This is the base class from which other classes will inherit"""
+    """Class from which all other classes will inherit"""
 
     def __init__(self, *args, **kwargs):
         """Initializes instance attributes
 
         Args:
-            *args: list of arguments
-            **kwargs: dict of key-values arguments
+            - *args: list of arguments
+            - **kwargs: dict of key-values arguments
         """
 
         if kwargs is not None and kwargs != {}:
@@ -31,6 +32,7 @@ class BaseModel:
             self.id = str(uuid.uuid4())
             self.created_at = datetime.now()
             self.updated_at = datetime.now()
+            storage.new(self)
 
     def __str__(self):
         """Returns official string representation"""
@@ -42,6 +44,7 @@ class BaseModel:
         """updates the public instance attribute updated_at"""
 
         self.updated_at = datetime.now()
+        storage.save()
 
     def to_dict(self):
         """returns a dictionary containing all keys/values of __dict__"""
