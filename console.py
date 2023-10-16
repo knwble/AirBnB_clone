@@ -10,7 +10,11 @@ import json
 
 class HBNBCommand(cmd.Cmd):
 
-    """Class for the command interpreter."""
+    """
+
+    Class for the command interpreter.
+
+    """
 
     prompt = "(hbnb) "
 
