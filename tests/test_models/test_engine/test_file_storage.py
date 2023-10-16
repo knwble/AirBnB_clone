@@ -7,6 +7,7 @@ import time
 from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 from models import storage
+from models.__init__ import storage
 import re
 import json
 import os
