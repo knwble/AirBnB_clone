@@ -83,18 +83,15 @@ class HBNBCommand(cmd.Cmd):
         return True
 
     def do_quit(self, line):
-        """Exits the program.
-        """
+        """Exits the program."""
         return True
 
     def emptyline(self):
-        """Doesn't do anything on ENTER.
-        """
+        """Doesn't do anything on ENTER."""
         pass
 
     def do_create(self, line):
-        """Creates an instance.
-        """
+        """Creates an instance."""
         if line == "" or line is None:
             print("** class name missing **")
         elif line not in storage.classes():
@@ -105,8 +102,7 @@ class HBNBCommand(cmd.Cmd):
             print(b.id)
 
     def do_show(self, line):
-        """Prints the string representation of an instance.
-        """
+        """Prints the string representation of an instance."""
         if line == "" or line is None:
             print("** class name missing **")
         else:
@@ -123,8 +119,7 @@ class HBNBCommand(cmd.Cmd):
                     print(storage.all()[key])
 
     def do_destroy(self, line):
-        """Deletes an instance based on the class name and id.
-        """
+        """Deletes an instance based on the class name and id."""
         if line == "" or line is None:
             print("** class name missing **")
         else:
@@ -157,8 +152,7 @@ class HBNBCommand(cmd.Cmd):
             print(new_list)
 
     def do_count(self, line):
-        """Counts the instances of a class.
-        """
+        """Counts the instances of a class."""
         words = line.split(' ')
         if not words[0]:
             print("** class name missing **")
