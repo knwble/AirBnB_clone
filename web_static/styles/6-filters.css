@@ -74,8 +74,13 @@
     z-index: 1;
 }
 
+ul.popover {
+    list-style: none;
+}
+
 .popover li {
     padding: 8px 16px;
+    list-style: none;
 }
 
 .popover h2 {
