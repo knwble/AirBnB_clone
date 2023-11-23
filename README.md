@@ -170,4 +170,4 @@ The recognizable commands by the interpreter are the following:
 ## Authors :black_nib:
 [chiefebube](https://github.com/chiefebube) 
 
-[knwbie](https://github.com/knwbie)
+[knwble](https://github.com/knwble)
